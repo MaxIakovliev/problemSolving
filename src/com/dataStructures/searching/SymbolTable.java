@@ -1,9 +1,11 @@
-package com.dataStructures;
+package com.dataStructures.searching;
+
+import java.security.Key;
 
 /**
  * Created by Maks on 2/27/2017.
  */
-public class SymbolTable<Key, Value> {
+public class SymbolTable<Key extends Comparable<Key>,Value> implements IST<Key, Value> {
 
     private Key[] _keys;
     private Value[] _val;
@@ -28,7 +30,7 @@ public class SymbolTable<Key, Value> {
         _count++;
     }
 
-    private void delete(Key key){
+    public void delete(Key key){
         for(int i=0; i<_count; i++){
             if(key.equals(_keys[i])){
                 _keys[i]=_keys[_count-1];
