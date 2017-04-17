@@ -1,4 +1,4 @@
-package com.dataStructures.searching;
+package com.dataStructures.search;
 
 /**
  * Created by Maks on 2/27/2017.

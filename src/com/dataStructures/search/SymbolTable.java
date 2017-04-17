@@ -1,6 +1,6 @@
-package com.dataStructures.searching;
+package com.dataStructures.search;
 
-import java.security.Key;
+import com.dataStructures.search.IST;
 
 /**
  * Created by Maks on 2/27/2017.
