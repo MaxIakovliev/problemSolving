@@ -17,7 +17,7 @@ public class DutchNationalFlag {
                 if(arr[end]==2) {
                     end--;
                 }
-                else {
+                else { 
                     swap(arr, start, end);
                 }
             }
