@@ -10,22 +10,30 @@ import java.util.List;
  * See https://en.wikipedia.org/wiki/Lee_algorithm for additional details
  */
 public class LeeAlgorithm {
-    public List<Pair<Integer,Integer>> findPath(Integer[][] map, Pair<Integer,Integer> start, Pair<Integer,Integer> end) {
+    public List<Pair<Integer,Integer>> findPath(Integer[][] map, int x1, int y1, int x2, int y2) {
         List<Pair<Integer,Integer>> result= new ArrayList<Pair<Integer, Integer>>();
         //creating worked map
         Integer[][] workMap=new Integer[map.length][];
         for(int i=0; i<map.length; i++){
             workMap[i]=new Integer[map[i].length];
         }
-        
+        int d=0;
+        while (x1!=x2 && y1!=y2){
+            d++;
+            for(int i=x1-d; i<x1+d; i++){
+                for(int j=y1-d; j<y1+d; j++){
+                    if(i>=0 && j>=0 && i<workMap.length && j< workMap[i].length && workMap[i][j]==0){
+                        workMap[i][j]=d;
+                    }
+                }
+            }
+        }
+        //TODO write backtrace method
+
 
         return result;
     }
 
-    public void mark(Integer[][] workMap, Integer[][] originMap, Pair<Integer,Integer> start,  int d){
-        //mark top
-        if(start.getValue()-d>0 && originMap[start.getKey()][start.getValue()]==0){
-            workMap[start.getKey()][start.getValue()]=d;
-        }
-    }
+
+
 }
