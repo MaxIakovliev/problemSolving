@@ -12,9 +12,15 @@ public class DistinctCombinationsOfGivenLength {
 
     public List<List<Integer>> solution1(Integer[] arr, int len) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
-        int count= len;
-        while(count>0){
-
+        int i= 0;
+        while(i< arr.length-len){
+            int c=i+len-1;
+            Integer[] part=new Integer[len];
+            for(int j=0; j<len-1; j++){
+                part[j]=arr[i+j];
+            }
+            List<List<Integer>> tmpRes=move(arr,part,c);
+            i++;
         }
 
         return  result;

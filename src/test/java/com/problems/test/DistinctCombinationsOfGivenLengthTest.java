@@ -10,6 +10,5 @@ public class DistinctCombinationsOfGivenLengthTest {
     public  void solution1TestCase1(){
         DistinctCombinationsOfGivenLength s=new DistinctCombinationsOfGivenLength();
         Integer[] input=new Integer[]{1, 2, 3};
-        List<s.solution1(input,2);
     }
 }
