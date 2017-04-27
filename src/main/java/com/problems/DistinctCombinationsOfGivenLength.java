@@ -12,33 +12,24 @@ public class DistinctCombinationsOfGivenLength {
 
     public List<List<Integer>> solution1(Integer[] arr, int len) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
-        int i= 0;
-        while(i< arr.length-len){
-            int c=i+len-1;
-            Integer[] part=new Integer[len];
-            for(int j=0; j<len-1; j++){
-                part[j]=arr[i+j];
+        int counter=0;
+        //отсортировать
+        while(counter<arr.length-len){//пока самый первый элемент не достиг конца массива со сдвигом на длину
+            for(int i=len-1; i>=0; i++){
+                List<List<Integer>> cur=collect(arr, i, len, counter);
             }
-            List<List<Integer>> tmpRes=move(arr,part,c);
-            i++;
         }
 
         return  result;
     }
 
-    private List<List<Integer>> move(Integer[] arr,Integer[] part, int c){
-        List<List<Integer>> res=new ArrayList<List<Integer>>();
-        int counter=0;
-        for(int i=c; i<arr.length; i++ ){
-            List<Integer> current=new ArrayList<Integer>();
-            for(int j=0; j<part.length; j++){
-                current.add(part[j]);
-            }
-            current.add(arr[i]);
-            res.add(counter++, current);
-        }
-        return res;
-    }
+    private List<List<Integer>> collect(Integer[] arr, int pos, int len, int shift) {
+        List<List<Integer>> result=new ArrayList<List<Integer>>();
+        for(int i=0; i<len-1; i++){
 
+        }
+
+        return  result;
+    }
 
 }
