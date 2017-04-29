@@ -24,6 +24,4 @@ public class DistinctCombinationsOfGivenLength {
         return  result;
     }
 
-
-
 }
