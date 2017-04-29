@@ -22,7 +22,7 @@ public class MinimumSumSubarrayGivenSize {
                 tmp=0;
                 i=i-window+1;
                 window=0;
-            }8
+            }
 
 
                 tmp += arr[i];

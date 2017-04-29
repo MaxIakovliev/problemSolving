@@ -14,10 +14,12 @@ public class SubarrayHavingGivenSum {
         int window=0;
         int tmp=0;
         for(int i=0; i<arr.length; i++){
+            tmp+=arr[i];
             if(tmp>sum){
                 tmp=tmp-arr[left];
                 left++;
             }
+
             if(tmp==sum){
                 return  new Pair<Integer, Integer>(left,i);
             }
