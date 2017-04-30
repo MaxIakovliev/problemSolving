@@ -19,21 +19,25 @@ public class FindMaximumSumPathInvolving {
         while(i<a.length && j<b.length){
             if(a[i]<b[j]){
                 maxA+=a[i];
-                i++;
                 tmpPathA.add(a[i]);
+                i++;
             }
             else if(a[i]>b[j]){
                 maxB+=b[j];
-                j++;
                 tmpPathB.add(b[j]);
+                j++;
             }
             else{
+                tmpPathA.add(a[i]);
+                tmpPathB.add(b[j]);
                 if(maxA>maxB){
                     result.addAll(tmpPathA);
                 }
                 else {
                     result.addAll(tmpPathB);
                 }
+                tmpPathA.clear();
+                tmpPathB.clear();
                 i++;
                 j++;
                 maxA=0;
