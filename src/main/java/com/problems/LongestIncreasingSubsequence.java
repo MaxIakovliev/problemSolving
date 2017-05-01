@@ -45,12 +45,26 @@ public class LongestIncreasingSubsequence {
 
     public static void main(String[] args) {
         // write your code here
-        Integer input[] = { 2, 5, 3, 7, 11, 8, 10, 13, 6 };
+        Integer input[] = { 0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15 };
          List<Integer> res= solution1(input);
         for(Integer a: res){
             System.out.print(a+" ");
         }
+        System.out.println();
 
+        Integer input2[] = {9,8,7,6,5,4,3,2,1 };
+        res= solution1(input2);
+        for(Integer a: res){
+            System.out.print(a+" ");
+        }
+
+        System.out.println();
+
+        Integer input3[] = {9,8,7,6,5,4,3,2,1,4 };
+        res= solution1(input3);
+        for(Integer a: res){
+            System.out.print(a+" ");
+        }
     }
 
 }
