@@ -7,8 +7,19 @@ package com.problems.techiedelight;
  */
 public class MinHeap {
 
+    private int total;
+    public  void sort(Integer[] arr){
+        total=arr.length-1;
+        buildMinHeap(arr);
+        for(int i=total; i>0; i--){
+            swap(arr,0,i);
+            total--;
+            minHeapify(arr,0);
+        }
+    }
+
     public void buildMinHeap(Integer[] arr){
-        for(int i=arr.length/2; i>=0; i--){
+        for(int i=total/2; i>=0; i--){
             minHeapify(arr, i);
         }
 
@@ -18,11 +29,11 @@ public class MinHeap {
         int l=left(i);
         int r=right(i);
         int smallest=i;
-        if(l<=arr.length-1 && arr[l].compareTo(smallest)<0){
+        if(l<=total && arr[l].compareTo(smallest)<0){
             smallest=l;
         }
 
-        if(r<=arr.length-1 && arr[r].compareTo(smallest)<0){
+        if(r<=total && arr[r].compareTo(smallest)<0){
             smallest=r;
         }
         if(smallest!=i){
@@ -38,7 +49,7 @@ public class MinHeap {
     }
 
     private int left(int i){
-        return  i*i;
+        return  i*2;
     }
 
     private int right(int i){
