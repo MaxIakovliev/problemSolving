@@ -36,7 +36,7 @@ public class HeapSort {
         }
     }
 
-    private static  void buildMaxHeap(Integer[] arr){
+    private static void buildMaxHeap(Integer[] arr){
         for(int i=total/2; i>=0; i--){
             maxHeapify(arr,i);
         }
