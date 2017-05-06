@@ -11,7 +11,7 @@ public class MinHeap {
     public  void sort(Integer[] arr){
         total=arr.length-1;
         buildMinHeap(arr);
-        for(int i=total; i>0; i--){
+        for(int i=total; i>=0; i--){
             swap(arr,0,i);
             total--;
             minHeapify(arr,0);
@@ -49,11 +49,11 @@ public class MinHeap {
     }
 
     private int left(int i){
-        return  i*2;
+        return  i*2+1;
     }
 
     private int right(int i){
-        return left(i)+1;
+        return i*2+2;
     }
 
     private int parent(int i){

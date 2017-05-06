@@ -17,7 +17,8 @@ public class MinHeapTest implements  ISingleTestCase {
         int counter=0;
         //for (int i=size-1; i>=0; i--){
         for (int i=0; i<size; i++){
-            input[counter++]=i;
+            input[counter]=i;
+            counter++;
         }
         mh.sort(input);
         Integer expected=size-1;
