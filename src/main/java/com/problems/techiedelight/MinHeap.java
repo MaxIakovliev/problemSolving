@@ -49,16 +49,38 @@ public class MinHeap {
     }
 
     private int left(int i){
-        return  i*2+1;
+        return  i*2;
     }
 
     private int right(int i){
-        return i*2+2;
+        return i*2+1;
     }
 
     private int parent(int i){
         return  i/2;
     }
 
+
+    /***
+     *  http://www.techiedelight.com/check-given-array-represents-min-heap-not/
+     *  check is array is valid minheap or not
+     * @param arr
+     * @return yes/no
+     */
+    public  boolean isArrayAMinHeap(Integer[] arr){
+        boolean res=true;
+        for(int i=0;i<arr.length/2; i++){
+            int l=left(i);
+            int r=right(i);
+            if(l<arr.length && r<arr.length) {
+                if (arr[l] > arr[r] || arr[l] < arr[i] || arr[r] < arr[i]) {
+                    return false;
+                }
+            }
+        }
+
+        return res;
+
+    }
 
 }

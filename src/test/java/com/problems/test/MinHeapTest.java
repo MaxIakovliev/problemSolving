@@ -23,7 +23,47 @@ public class MinHeapTest implements  ISingleTestCase {
         mh.sort(input);
         Integer expected=size-1;
         Assert.assertEquals(expected, input[0]);
+    }
 
+    @Test
+    public  void isMinHeapTestCase1(){
+        MinHeap mh=new MinHeap();
+        Integer[] input=new Integer[]{1,2,3,4,5,6};
+        Assert.assertTrue(mh.isArrayAMinHeap(input));
+    }
 
+    @Test
+    public  void isMinHeapTestCase2(){
+        MinHeap mh=new MinHeap();
+        Integer[] input=new Integer[]{1,2,3,4,5,2};
+        Assert.assertFalse(mh.isArrayAMinHeap(input));
+    }
+
+    @Test
+    public  void isMinHeapTestCase3(){
+        MinHeap mh=new MinHeap();
+        Integer[] input=new Integer[]{1,2,3,4,7,6};
+        Assert.assertFalse(mh.isArrayAMinHeap(input));
+    }
+
+    @Test
+    public  void isMinHeapTestCase4(){
+        MinHeap mh=new MinHeap();
+        Integer[] input=new Integer[]{10,2,3,4,5,6};
+        Assert.assertFalse(mh.isArrayAMinHeap(input));
+    }
+
+    @Test
+    public  void isMinHeapTestCase5(){
+        MinHeap mh=new MinHeap();
+        Integer[] input=new Integer[]{10,12,13,14,15,16};
+        Assert.assertTrue(mh.isArrayAMinHeap(input));
+    }
+
+    @Test
+    public  void isMinHeapTestCase6(){
+        MinHeap mh=new MinHeap();
+        Integer[] input=new Integer[]{10,2,13,14,15,16};
+        Assert.assertFalse(mh.isArrayAMinHeap(input));
     }
 }
