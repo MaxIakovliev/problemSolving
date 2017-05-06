@@ -17,6 +17,11 @@ public class ActivitySelectionProblem {
             if(res.isEmpty()|| res.get(res.size()-1).end<arr[i].start){
                 res.add(arr[i]);
             }
+
+            if(res.get(res.size()-1).start<arr[i].start && res.get(res.size()-1).end>arr[i].end){
+                res.get(res.size()-1).start=arr[i].start;
+                res.get(res.size()-1).end=arr[i].end;
+            }
         }
         return  res;
     }
