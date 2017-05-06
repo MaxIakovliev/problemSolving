@@ -13,7 +13,7 @@ public class MergingOverlappingIntervals {
         List<Interval> res=new ArrayList<Interval>();
         Arrays.sort(data);
 
-        for(int i=1; i<data.length; i++){
+        for(int i=0; i<data.length; i++){
 
             if(res.isEmpty()|| res.get(res.size()-1).end<data[i].begin){
                 res.add(new Interval(data[i].begin, data[i].end));
@@ -22,11 +22,10 @@ public class MergingOverlappingIntervals {
                 res.get(res.size()-1).end=data[i].end;
             }
         }
-
         return  res;
     }
 
-    public  class Interval  implements  Comparable {
+    public static  class Interval  implements  Comparable {
 
         public  int begin, end;
 
@@ -37,7 +36,7 @@ public class MergingOverlappingIntervals {
         }
 
         public int compareTo(Object o) {
-            return Integer.compare(begin,(Integer)o);
+            return Integer.compare(begin,((Interval)o).begin);
         }
     }
 }
