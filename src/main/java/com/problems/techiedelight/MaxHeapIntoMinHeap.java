@@ -6,6 +6,10 @@ package com.problems.techiedelight;
  */
 public class MaxHeapIntoMinHeap {
     public  void solution1(Integer[] arr){
+        int i=(arr.length-1)/2;
+        while(i>=0){
+            heapify(arr, i--,arr.length-1);
+        }
 
     }
 
