@@ -14,12 +14,12 @@ public class SortKSortedArray {
 
         IntComparator comparator=new IntComparator();
         PriorityQueue<Integer> q= new PriorityQueue<Integer>(comparator);
-        for(int i=0; i<k; i++){
+        for(int i=0; i<=k; i++){
             q.add(arr[i]);
         }
 
         int idx=0;
-        for(int i=k; i<arr.length; i++){
+        for(int i=k+1; i<arr.length; i++){
             arr[idx]=q.poll();
             q.add(arr[i]);
             idx++;
