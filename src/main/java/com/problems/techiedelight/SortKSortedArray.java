@@ -1,7 +1,7 @@
 package com.problems.techiedelight;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 /**
  * Created by Maks on 5/8/2017.
@@ -11,7 +11,9 @@ public class SortKSortedArray {
 
     public  void solution1(Integer[] arr, int k){
 
-        Queue<Integer> q= new PriorityQueue<Integer>();
+
+        IntComparator comparator=new IntComparator();
+        PriorityQueue<Integer> q= new PriorityQueue<Integer>(comparator);
         for(int i=0; i<k; i++){
             q.add(arr[i]);
         }
@@ -28,6 +30,17 @@ public class SortKSortedArray {
             idx++;
         }
 
+    }
+
+    public class IntComparator implements Comparator<Integer>{
+
+        public int compare(Integer o1, Integer o2) {
+            if(o1<o2)
+                return  -1;
+            if(o1>o2)
+                return  1;
+            else return  0;
+        }
     }
 
 }
