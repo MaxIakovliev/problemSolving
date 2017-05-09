@@ -20,6 +20,6 @@ public class SortKSortedArrayTest {
         for(int i=0; i< expected.length; i++){
             Assert.assertEquals(expected[i], input[i]);
         }
- 
+
     }
 }
