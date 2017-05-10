@@ -23,7 +23,7 @@ public class SmallestRangeInAllLists {
 
         for(int i=0; i<arr.length; i++){
             max=Math.max(max, arr[i][0]);
-            pq.add(new Range(arr[i][0],i,1));
+            pq.add(new Range(arr[i][0],i,0));
         }
         // run till end of any list is not reached
         for(;;){
@@ -36,7 +36,7 @@ public class SmallestRangeInAllLists {
 
             // update min, max if new min is found
             if(max-min<res.getValue()-res.getKey()){
-                res=new Pair<Integer, Integer>(max, max);
+                res=new Pair<Integer, Integer>(min, max);
             }
             // return on reaching the end of any list
             if(j==arr[i].length-1){
