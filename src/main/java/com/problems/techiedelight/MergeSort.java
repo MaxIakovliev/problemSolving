@@ -10,11 +10,13 @@ public class MergeSort {
         sort(arr, 0, arr.length-1);
     }
     private void sort(Integer[] arr, int lo, int hi){
-        if(hi<=lo) return;
-        int mid= lo+ (hi-lo)/2;
-        sort(arr,lo, mid);
-        sort(arr,mid+1, hi);
-        merge(arr,lo,mid, hi);
+
+        if( lo<hi) {
+            int mid = (hi + lo) / 2;
+            sort(arr, lo, mid);
+            sort(arr, mid + 1, hi);
+            merge(arr, lo, mid, hi);
+        }
     }
 
     private void merge(Integer[] arr, int lo, int mid, int hi){
@@ -23,7 +25,7 @@ public class MergeSort {
 
         Integer[] L=new Integer[n1];
         Integer[] R=new Integer[n2];
-        for(int k=0; k<=n1; k++){
+        for(int k=0; k<n1; k++){
             L[k]=arr[k+lo];
         }
 
