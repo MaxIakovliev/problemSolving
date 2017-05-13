@@ -59,7 +59,7 @@ public class QuickSort {
         }
     }
 
-    private  void hybridSort(Integer[] arr, int lo, int hi){
+    private  void sortHybrid(Integer[] arr, int lo, int hi){
         while(lo<hi){
             if(hi-lo<10){
                 InsertionSort insort=new InsertionSort();
@@ -68,15 +68,19 @@ public class QuickSort {
             else {
                 int pivotal= partition(arr, lo, hi);
                 if(pivotal-lo<hi-pivotal){
-                    hybridSort(arr, lo, pivotal-1);
+                    sortHybrid(arr, lo, pivotal-1);
                     lo=pivotal+1;
                 }
                 else {
-                    hybridSort(arr, pivotal+1, hi);
+                    sortHybrid(arr, pivotal+1, hi);
                     hi= pivotal-1;
                 }
             }
         }
+    }
+
+    public  void sortHybrid(Integer[] arr){
+        sortHybrid(arr, 0, arr.length-1);
     }
 
     public  void sortIterative(Integer[] arr){
