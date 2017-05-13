@@ -8,7 +8,7 @@ public class QuickSort {
 
         int pivot=arr[hi];
         int i=lo-1;
-        for(int j=lo; j<hi-1; j++){
+        for(int j=lo; j<hi; j++){
             if(arr[j]<=pivot){
                 i++;
                 swap(arr, i,j);
@@ -26,11 +26,15 @@ public class QuickSort {
         arr[j]=tmp;
     }
 
-    public void sort(Integer[] arr, int lo, int hi){
+    private void sort(Integer[] arr, int lo, int hi){
         if(lo<hi) {
             int pivotal = partition(arr, lo, hi);
             sort(arr,lo, pivotal-1);
             sort(arr,pivotal+1, hi);
         }
+    }
+
+    public  void sort(Integer[] arr){
+        sort(arr, 0, arr.length-1);
     }
 }
