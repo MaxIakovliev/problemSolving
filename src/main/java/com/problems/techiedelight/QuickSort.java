@@ -43,16 +43,19 @@ public class QuickSort {
         while(top>=0){
             hi=stack[top--];
             lo=stack[top--];
-            int pivotal= partition(arr,lo,hi);
-            if(pivotal-1>1){
-                stack[++top]=lo;
-                stack[++top]=pivotal-1;
+            if(lo<hi) {
+                int pivotal = partition(arr, lo, hi);
+                if (pivotal - 1 > 1) {
+                    stack[++top] = lo;
+                    stack[++top] = pivotal - 1;
+                }
+
+                if (pivotal + 1 < hi) {
+                    stack[++top] = pivotal + 1;
+                    stack[++top] = hi;
+                }
             }
 
-            if(pivotal+1<hi){
-                stack[++top]=pivotal+1;
-                stack[++top]=hi;
-            }
         }
     }
 
