@@ -34,7 +34,34 @@ public class QuickSort {
         }
     }
 
+    private void sortIterative(Integer[] arr, int lo, int hi){
+        Integer[] stack=new Integer[hi-lo+1];
+        int top=-1;
+        stack[++top]=lo;
+        stack[++top]=hi;
+
+        while(top>=0){
+            hi=stack[top--];
+            lo=stack[top--];
+            int pivotal= partition(arr,lo,hi);
+            if(pivotal-1>1){
+                stack[++top]=lo;
+                stack[++top]=pivotal-1;
+            }
+
+            if(pivotal+1<hi){
+                stack[++top]=pivotal+1;
+                stack[++top]=hi;
+            }
+        }
+    }
+
+    public  void sortIterative(Integer[] arr){
+        sortIterative(arr, 0, arr.length-1);
+    }
+
     public  void sort(Integer[] arr){
         sort(arr, 0, arr.length-1);
     }
+
 }
