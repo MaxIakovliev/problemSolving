@@ -61,9 +61,10 @@ public class QuickSort {
 
     private  void sortHybrid(Integer[] arr, int lo, int hi){
         while(lo<hi){
-            if(hi-lo<10){
+            if(hi-lo<30){
                 InsertionSort insort=new InsertionSort();
                 insort.iterativeSort(arr, lo, hi);
+                return;
             }
             else {
                 int pivotal= partition(arr, lo, hi);
