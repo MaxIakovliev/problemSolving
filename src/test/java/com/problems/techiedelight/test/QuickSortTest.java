@@ -40,7 +40,7 @@ public class QuickSortTest implements com.problems.test.ISingleTestCase {
         Integer input[]={12, 11, 13, 5, 6, 7};
         Integer exp[]={5, 6, 7, 11, 12, 13};
 
-        qs.sortHybrid(input);
+        qs.sortIterative(input);
 
         for(int i=0; i<exp.length; i++){
             Assert.assertEquals(exp[i],input[i]);
