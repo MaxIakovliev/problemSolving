@@ -11,12 +11,20 @@ public class BinarySearch {
 
     private Integer findElement(Integer[] arr, Integer el, int start, int end){
         int mid= (end-start)/2;
+        if(arr[start]==el)
+            return  start;
+        if(arr[end]==el)
+            return  end;
+        if(arr[mid]==el)
+            return mid;
+        if(arr[end]<el && end==arr.length-1)
+            return -1;
         if(mid==0) return  -1;
         if(arr[mid]>el)
             return findElement(arr, el,start, mid);
         else if(arr[mid]<el)
             return  findElement(arr, el, mid+1,end);
-        else
-            return mid;
+
+        return  -1;
     }
 }
