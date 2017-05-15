@@ -33,4 +33,17 @@ public class QuickSortTest implements com.problems.test.ISingleTestCase {
             Assert.assertEquals(exp[i],input[i]);
         }
     }
+
+    @Test
+    public void solution3TestCase1() {
+        QuickSort qs=new QuickSort();
+        Integer input[]={12, 11, 13, 5, 6, 7};
+        Integer exp[]={5, 6, 7, 11, 12, 13};
+
+        qs.sortHybrid(input);
+
+        for(int i=0; i<exp.length; i++){
+            Assert.assertEquals(exp[i],input[i]);
+        }
+    }
 }
