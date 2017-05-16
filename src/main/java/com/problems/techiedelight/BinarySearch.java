@@ -10,7 +10,7 @@ public class BinarySearch {
     }
 
     public   Integer findElement(Integer[] arr, Integer el, int start, int end){
-        int mid= (end-start)/2;
+        int mid= (end+start)/2;
         if(arr[start]==el)
             return  start;
         if(arr[end]==el)

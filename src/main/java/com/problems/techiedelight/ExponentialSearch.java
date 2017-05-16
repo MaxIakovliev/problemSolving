@@ -13,6 +13,6 @@ public class ExponentialSearch implements ISearch {
         while(lo<arr.length-1 && arr[lo]<x){
             lo*=2;
         }
-        return  new BinarySearch().findElement(arr,x,lo/2,Math.min(lo,arr.length-1));
+        return  new BinarySearch().findElement(arr,x,(lo/2),Math.min(lo,arr.length-1));
     }
 }
