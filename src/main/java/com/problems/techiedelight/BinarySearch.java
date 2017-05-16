@@ -9,7 +9,7 @@ public class BinarySearch {
         return  findElement(arr,el, 0, arr.length-1);
     }
 
-    private Integer findElement(Integer[] arr, Integer el, int start, int end){
+    public   Integer findElement(Integer[] arr, Integer el, int start, int end){
         int mid= (end-start)/2;
         if(arr[start]==el)
             return  start;
