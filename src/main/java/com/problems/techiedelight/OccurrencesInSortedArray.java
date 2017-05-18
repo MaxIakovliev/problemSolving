@@ -12,7 +12,7 @@ public class OccurrencesInSortedArray {
         int res=0;
         int idx=-1;
         boolean isLeft=true;
-        while(lo<=hi){
+        while(lo<=hi && hi<=arr.length-1){
             int mid=(lo+hi)/2;
             if(arr[mid]==x && idx==-1){
                 idx=mid;
@@ -31,6 +31,7 @@ public class OccurrencesInSortedArray {
             else if(x>arr[mid] && idx!=-1){
                 isLeft=false;
                 lo=idx+1;
+                hi=idx+2;
             }
             else if(x<arr[mid] && idx!=-1){
                 return  res;
