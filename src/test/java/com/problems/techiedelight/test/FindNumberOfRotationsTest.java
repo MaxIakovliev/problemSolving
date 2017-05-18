@@ -17,4 +17,13 @@ public class FindNumberOfRotationsTest {
         int exp=3;
         Assert.assertEquals(exp,res);
     }
+
+    @Test
+    public void linearSolutionTestCase2(){
+        FindNumberOfRotations fr=new FindNumberOfRotations();
+        Integer[] input={2, 5, 6, 8, 9, 10};
+        int res= fr.linearSolution(input);
+        int exp=0;
+        Assert.assertEquals(exp,res);
+    }
 }
