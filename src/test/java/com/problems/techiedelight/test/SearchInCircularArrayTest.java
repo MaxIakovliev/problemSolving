@@ -17,4 +17,13 @@ public class SearchInCircularArrayTest {
         int res=sca.findElement(input,10);
         Assert.assertEquals(exp,res);
     }
+
+    @Test
+    public void solution1TestCase2(){
+        SearchInCircularArray sca=new SearchInCircularArray();
+        Integer[] input={9, 10, 2, 5, 6, 8};
+        int exp=3;
+        int res=sca.findElement(input,5);
+        Assert.assertEquals(exp,res);
+    }
 }
