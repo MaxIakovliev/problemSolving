@@ -14,7 +14,7 @@ public class KnapsackProblem01 {
             return Integer.MIN_VALUE;
         }
 
-        int include=vals[size]+recursiveSolution(weights,vals,size-1,limit-vals[size]);
+        int include=vals[size]+recursiveSolution(weights,vals,size-1,limit-weights[size]);
         int exclude=recursiveSolution(weights,vals,size-1, limit);
 
         return Math.max(include,exclude);
