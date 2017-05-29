@@ -20,11 +20,8 @@ public class NQueenProblem {
                 solve(arr,size,col+1);
                 arr[i][col]=0;
             }
-
-            return false;
-
         }
-
+        return false;
     }
 
     private void printSolution(int[][] arr, int size) {
@@ -80,7 +77,7 @@ public class NQueenProblem {
         //check diagonal lower left
         i=row;
         j=col;
-        while(i>=0 && col<size){
+        while(i>=0 && j<size){
             if(arr[i][j]==1){
                 return  false;
             }
@@ -99,5 +96,19 @@ public class NQueenProblem {
             j++;
         }
         return  true;
+    }
+
+
+    public static void main(String[] args) {
+     NQueenProblem np=new NQueenProblem();
+        int size=4;
+        int[][] arr=new int[size][size];
+        for(int i =0; i<size; i++){
+            for(int j=0; j<size; j++){
+                arr[i][j]=0;
+            }
+        }
+        np.solve(arr,size,0);
+
     }
 }
