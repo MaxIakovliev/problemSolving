@@ -40,4 +40,44 @@ public class LongestCommonSubsequence {
         }
         return res[x.length][y.length];
     }
+
+
+    public char[] getLCSIterative(char[] x, char[] y){
+        int[][]matrix=new int [x.length][y.length];
+        for(int i=0; i<x.length; i++){
+            for(int j=0; j<y.length; j++){
+                if(i==0 || j==0){
+                    matrix[i][j]=0;
+                }
+                else if(x[i-1]==y[j-1]){
+                    matrix[i][j]=1+matrix[i-1][j-1];
+                }
+                else{
+                    matrix[i][j]=Math.max(matrix[i-1][j],matrix[i][j-1]);
+                }
+            }
+        }
+        char[] res=new char[matrix[x.length][y.length]];
+        int n=x.length;
+        int k=y.length;
+        int idx=res.length;
+        while(n>0 && k>0){
+            if(x[n-1]==y[k-1]){
+                res[idx-1]=x[n-1];
+                idx--;
+                n--;
+                k--;
+            }
+            else{
+                if(matrix[n-1][k]>matrix[n][k-1]){
+                    n--;
+                }
+                else{
+                    k--;
+                }
+            }
+        }
+        return res;
+
+    }
 }
