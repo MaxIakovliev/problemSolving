@@ -14,7 +14,7 @@ public class LongestCommonSubsequence {
         if(xs==0 || ys==0){
             return  0;
         }
-        if(x[xs]==y[ys]){
+        if(x[xs-1]==y[ys-1]){
             return 1+recursiveCount(x,y,xs-1, ys-1);
         }
         else {
