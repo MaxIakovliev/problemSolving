@@ -18,4 +18,14 @@ public class LongestCommonSubsequenceTest {
         int exp=4;
         Assert.assertEquals(exp,res);
     }
+
+    @Test
+    public void iterativeTabulationCountTestCase1(){
+        LongestCommonSubsequence lcs=new LongestCommonSubsequence();
+        String x="AGGTAB";
+        String y="GXTXAYB";
+        int res=lcs.iterativeTabulationSolution(x.toCharArray(),y.toCharArray());
+        int exp=4;
+        Assert.assertEquals(exp,res);
+    }
 }
