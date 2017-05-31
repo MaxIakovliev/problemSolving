@@ -28,4 +28,16 @@ public class LongestCommonSubsequenceTest {
         int exp=4;
         Assert.assertEquals(exp,res);
     }
+
+    @Test
+    public void iterativeGetLCSCountTestCase1(){
+        LongestCommonSubsequence lcs=new LongestCommonSubsequence();
+        String x="AGGTAB";
+        String y="GXTXAYB";
+        char[] res=lcs.getLCSIterative(x.toCharArray(),y.toCharArray());
+        char[] exp={'G','T','A','B'};
+        for(int i=0; i<exp.length; i++) {
+            Assert.assertEquals(exp[i], res[i]);
+        }
+    }
 }

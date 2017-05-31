@@ -43,9 +43,9 @@ public class LongestCommonSubsequence {
 
 
     public char[] getLCSIterative(char[] x, char[] y){
-        int[][]matrix=new int [x.length][y.length];
-        for(int i=0; i<x.length; i++){
-            for(int j=0; j<y.length; j++){
+        int[][]matrix=new int [x.length+1][y.length+1];
+        for(int i=0; i<=x.length; i++){
+            for(int j=0; j<=y.length; j++){
                 if(i==0 || j==0){
                     matrix[i][j]=0;
                 }
