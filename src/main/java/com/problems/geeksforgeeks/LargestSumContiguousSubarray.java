@@ -36,7 +36,7 @@ public class LargestSumContiguousSubarray {
                 max=maxEndHere;
                 endPos=i;
                 if(tmpStartPos>0){
-                    startPos=tmpStartPos;
+                    startPos=tmpStartPos+1;
                 }
             }
 
@@ -51,7 +51,7 @@ public class LargestSumContiguousSubarray {
         return  res;
     }
 
-    private class ResultTuple{
+    public class ResultTuple{
         public int sum;
         public int startPos;
         public int endPos;
