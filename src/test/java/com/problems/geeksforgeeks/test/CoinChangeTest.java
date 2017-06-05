@@ -17,4 +17,13 @@ public class CoinChangeTest {
         Assert.assertEquals(exp, res);
 
     }
+
+    @Test
+    public  void iterativeSolutionTestCase1(){
+        CoinChange cc=new CoinChange();
+        int res= cc.iterativeSolution(new int[]{1,2,3},3,4);
+        int exp=4;
+        Assert.assertEquals(exp, res);
+
+    }
 }

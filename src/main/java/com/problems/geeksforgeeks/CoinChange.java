@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * Created by Maks on 6/5/2017.
+ * http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/
  */
 public class CoinChange {
 
@@ -29,11 +30,13 @@ public class CoinChange {
         table[0]=1;
         //walk through all the coins
         for(int i=0; i<size; i++){
-            for(int j=coins[i]; j<total; j++){
-                table[j]+=table[j-table[i]];
+            for(int j=coins[i]; j<=total; j++){
+                table[j]+=table[j-coins[i]];
             }
         }
         return  table[total];
 
     }
+
+
 }
