@@ -1,5 +1,7 @@
 package com.problems.geeksforgeeks;
 
+import java.util.Arrays;
+
 /**
  * Created by Maks on 6/5/2017.
  */
@@ -19,5 +21,19 @@ public class CoinChange {
         }
 
         return  recursiveSolution(coins, size-1, total)+recursiveSolution(coins, size, total-coins[size-1]);
+    }
+
+    public  int iterativeSolution(int[] coins, int size, int total){
+        int[] table=new int[total+1];
+        Arrays.fill(table,0);
+        table[0]=1;
+        //walk through all the coins
+        for(int i=0; i<size; i++){
+            for(int j=coins[i]; j<total; j++){
+                table[j]+=table[j-table[i]];
+            }
+        }
+        return  table[total];
+
     }
 }
