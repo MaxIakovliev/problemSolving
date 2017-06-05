@@ -5,7 +5,7 @@ package com.problems.geeksforgeeks;
  */
 public class CoinChange {
 
-    public  int iterativeSolution(int[] coins, int size, int total){
+    public int recursiveSolution(int[] coins, int size, int total){
         if(total==0){
             return 1;
         }
@@ -14,10 +14,10 @@ public class CoinChange {
             return  0;
         }
 
-        if(size<=0 && total>0){
+        if(size<=0 && total>=1){
             return  0;
         }
 
-        return  iterativeSolution(coins, size-1, total)+iterativeSolution(coins, size, size-coins[size-1]);
+        return  recursiveSolution(coins, size-1, total)+recursiveSolution(coins, size, total-coins[size-1]);
     }
 }
