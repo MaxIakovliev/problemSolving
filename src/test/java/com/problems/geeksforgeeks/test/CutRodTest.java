@@ -17,4 +17,13 @@ public class CutRodTest {
         int res=cr.recursiveSolution(price, price.length);
         Assert.assertEquals(exp,res);
     }
+
+    @Test
+    public void iterativeSolutionTestCase1(){
+        CutRod cr=new CutRod();
+        int[] price={1, 5, 8, 9, 10, 17, 17, 20};
+        int exp=22;
+        int res=cr.iterativeSolution(price, price.length);
+        Assert.assertEquals(exp,res);
+    }
 }

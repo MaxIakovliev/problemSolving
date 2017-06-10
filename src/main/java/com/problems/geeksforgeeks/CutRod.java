@@ -14,4 +14,17 @@ public class CutRod {
         }
         return  max;
     }
+
+    public int iterativeSolution(int[] price, int n){
+        int[] vals=new int[n+1];
+        vals[0]=0;
+        for(int i=1; i<=n; i++){
+            int max=Integer.MIN_VALUE;
+            for(int j=0; j<i; j++){
+                max=Math.max(max,price[j]+vals[i-j-1]);
+            }
+            vals[i]=max;
+        }
+        return  vals[n];
+    }
 }
