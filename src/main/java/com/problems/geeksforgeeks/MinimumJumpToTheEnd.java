@@ -16,9 +16,8 @@ public class MinimumJumpToTheEnd {
 
         int min=Integer.MAX_VALUE;
         for(int i=s+1; i<=e && i<=s+arr[s]; i++){
-            int jump=recursiveSolution(arr, s,e);
-            min=Math.min(min, jump);
-
+            int jump=recursiveSolution(arr, i,e);
+            min=Math.min(min, jump+1);
         }
         return  min;
     }
