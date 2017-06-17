@@ -36,4 +36,23 @@ public class EditDistanceTest {
         int exp=3;
         Assert.assertEquals(exp, ed.recursiveSolution(s1,s2,s1.length(),s2.length()));
     }
+
+
+    @Test
+    public void iterativeSolutionTestCase1(){
+        EditDistance ed=new EditDistance();
+        String s1="abc";
+        String s2="adc";
+        int exp=1;
+        Assert.assertEquals(exp, ed.iterativeSolution(s1,s2,s1.length(),s2.length()));
+    }
+
+    @Test
+    public void iterativeSolutionTestCase2(){
+        EditDistance ed=new EditDistance();
+        String s1="abc";
+        String s2="qwd";
+        int exp=3;
+        Assert.assertEquals(exp, ed.iterativeSolution(s1,s2,s1.length(),s2.length()));
+    }
 }
