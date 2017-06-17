@@ -7,53 +7,49 @@ package com.problems.geeksforgeeks;
 public class LargestSumContiguousSubarray {
     public int kadanesAlgorithm(int[]arr){
         int max=Integer.MIN_VALUE;
-        int maxEndHere=0;
+        int tmp=0;
+        for(int i=1; i<arr.length; i++){
+            tmp+=arr[i];
+            if(tmp<0)
+                tmp=0;
 
-        for(int i=0; i<arr.length; i++){
-            maxEndHere+=arr[i];
-            if(max<maxEndHere){
-                max=maxEndHere;
-            }
-
-            if(maxEndHere<0){
-                maxEndHere=0;
-            }
+            max=Math.max(max, tmp);
         }
         return  max;
+
     }
 
     public ResultTuple kadanesAlgorithmExt(int[]arr){
-        ResultTuple res=new ResultTuple();
+        int startPos=-1;
+        int endPos=-1;
         int max=Integer.MIN_VALUE;
-        int maxEndHere=0;
-        int startPos=0;
-        int endPos=0;
-        int tmpStartPos=0;
+        int tmp=0;
+        for(int i=0; i<arr.length;i++){
+            tmp+=arr[i];
+            if (tmp<0){
+                tmp=0;
+                startPos=-1;
+                endPos=-1;
+            } else if(startPos<0)
+                startPos=i;
 
-        for(int i=0; i<arr.length; i++){
-            maxEndHere+=arr[i];
-            if(max<maxEndHere){
-                max=maxEndHere;
+            if(tmp>max){
+                max=tmp;
                 endPos=i;
-                if(tmpStartPos>0){
-                    startPos=tmpStartPos+1;
-                }
             }
 
-            if(maxEndHere<0){
-                maxEndHere=0;
-                tmpStartPos=i;
-            }
         }
-        res.sum=max;
-        res.startPos=startPos;
-        res.endPos=endPos;
-        return  res;
+        return new ResultTuple(max,startPos,endPos);
     }
 
     public class ResultTuple{
         public int sum;
         public int startPos;
         public int endPos;
+        public ResultTuple(int sum, int startPos, int endPos){
+            this.sum=sum;
+            this.startPos=startPos;
+            this.endPos=endPos;
+        }
     }
 }
