@@ -15,7 +15,7 @@ public class MinCostPathTest {
         int[][]arr={{1, 2, 3},
                     {4, 8, 2},
                     {1, 5, 3} };
-        int res = mcp.naiveRecursiveSolution(arr,2,2);
+        int res = mcp.recursive(arr,2,2);
         int exp=8;
         Assert.assertEquals(exp,res);
     }
