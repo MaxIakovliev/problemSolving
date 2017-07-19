@@ -32,6 +32,10 @@ public class ValidNumberTest {
     public  void testInvalidIntNumbers(){
         ValidNumber vn=new ValidNumber();
         Assert.assertEquals("1",false,vn.isNumber(""));
+        Assert.assertEquals("1",false,vn.isNumber("1-"));
+        Assert.assertEquals("1.1",false,vn.isNumber("1+"));
+        Assert.assertEquals("1.2",false,vn.isNumber("1+"));
+        Assert.assertEquals("1.2",false,vn.isNumber("1+1"));
         Assert.assertEquals("2",false,vn.isNumber(" "));
         Assert.assertEquals("3",false,vn.isNumber("! "));
         Assert.assertEquals("4",false,vn.isNumber(" q "));
@@ -49,12 +53,16 @@ public class ValidNumberTest {
         int b=0b0001;
         ValidNumber vn=new ValidNumber();
         Assert.assertEquals(true,vn.isNumber("0b1"));
+        Assert.assertEquals(true,vn.isNumber("-0b1"));
+        Assert.assertEquals(true,vn.isNumber("+0b1"));
         Assert.assertEquals(true,vn.isNumber("0b1111"));
         Assert.assertEquals(true,vn.isNumber("0b0001111"));
         Assert.assertEquals(true,vn.isNumber("0b000110101"));
         Assert.assertEquals(true,vn.isNumber(" 0b000110101"));
         Assert.assertEquals(true,vn.isNumber(" 0b000110101 "));
         Assert.assertEquals(true,vn.isNumber("   0b000110101 "));
+        Assert.assertEquals(true,vn.isNumber("   -0b000110101 "));
+        Assert.assertEquals(true,vn.isNumber("   +0b000110101 "));
         Assert.assertEquals(true,vn.isNumber("   0b000110101   "));
         Assert.assertEquals(true,vn.isNumber("0b000110101   "));
     }
