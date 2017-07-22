@@ -27,6 +27,5 @@ public class MaximumLengthChainOfPairs {
                 max=tmp[i];
         }
         return  max;
-
     }
 }
