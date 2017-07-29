@@ -1,7 +1,8 @@
 package com.problems.leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -9,254 +10,74 @@ import java.util.List;
  * https://leetcode.com/problems/word-ladder-ii/#/description
  */
 public class WordLadderII {
-    private class Node {
-        private String head;
-        private List<Node> childs;
-        private boolean visited;
-
-        public Node() {
-            this.childs = new ArrayList<>();
-            setVisited(false);
-        }
-
-        public Node(String item) {
-            this.childs = new ArrayList<>();
-            head = item;
-            setVisited(false);
-        }
-
-        public String getHead() {
-            return head;
-        }
-
-        public void setHead(String head) {
-            this.head = head;
-        }
-
-        public List<Node> getChilds() {
-            return childs;
-        }
-
-        public void addChild(String str) {
-            childs.clear();
-            childs.add(new Node(str));
-        }
-
-        public boolean add(String word, int level) {
-//            if (level > 1)
-//                return false;
-            if (head == null) {
-                head = word;
-                return true;
-            } else {
-
-                if (matched(word, head)) {
-                    childs.add(new Node(word));
-                    return true;
-                }
-
-
-                boolean result=false;
-                for (int i = 0; i < childs.size(); i++) {
-                    boolean res = childs.get(i).add(word, level + 1);
-                    if(res)
-                        result=res;
-                }
-                return result;
-            }
-            //return false;
-        }
-
-        public boolean isVisited() {
-            return visited;
-        }
-
-        public void setVisited(boolean visited) {
-            this.visited = visited;
-        }
-    }
-
-    private Node buildCustomTree(List<String> words, String startWord, String endWord) {
-        ArrayList<String> iwords=new ArrayList<String>(words);
-        Node res = new Node();
-        boolean foundEndWord = false;
-        boolean foundStartWord = false;
-        int i=0;
-        //for (int i = 0; i < words.size(); i++) {
-        int lastSize=iwords.size();
-        while(iwords.size()>0){
-            if(i>=iwords.size()){
-                i=0;
-                if(lastSize==iwords.size()){
-                    break;
-                }
-                lastSize=iwords.size();
-            }
-            if(res.add(iwords.get(i), 0)) {
-                if (iwords.get(i).equals(endWord))
-                    foundEndWord = true;
-
-                if (iwords.get(i).equals(startWord))
-                    foundStartWord = true;
-
-                iwords.remove(i);
-            }
-            else
-                i++;
-        }
-        if (!foundEndWord)
-            return null;
-
-        if (foundStartWord && startWord.length() == 1) {
-            res = new Node();
-            if (matched(startWord, endWord)) {
-                res.setHead(startWord);
-                res.addChild(endWord);
-            } else
-                return null;
-        }
-
-        return res;
-    }
-
-
- 
-
-
-    private boolean matched(String s1, String s2) {
-        int mismatch = 0;
-        for (int i = 0; i < s1.length(); i++) {
-            if (s1.charAt(i) != s2.charAt(i)) {
-                mismatch++;
-            }
-            if (mismatch > 1)
-                return false;
-        }
-        return true;
-    }
-
-    private List<String> getBranch(Node node, String startWord, String endWord) {
-        List<String> res = new ArrayList<>();
-
-        if (node.getHead().equals(endWord)) {
-            res.add(node.getHead());
-            if (node.childs.size() == 0)
-                node.setVisited(true);
-            return res;
-        }
-
-        if (matched(startWord, node.getHead())) {
-            res.add(node.getHead());
-            if (node.childs.size() == 0)
-                node.setVisited(true);
-        }
-        if (node.childs.size() > 0) {
-            int countVisited = 0;
-            for (int i = 0; i < node.childs.size(); i++) {
-                if (!node.childs.get(i).isVisited()) {
-                    List<String> tmp = getBranch(node.getChilds().get(i), node.getHead(), endWord);
-                    if (tmp.size() > 0) {
-                        res.addAll(tmp);
-                        // if(node.childs.get(i).childs.size()==0)
-                        //    node.childs.remove(i);
-                    }
-                    break;
-                } else {
-                    countVisited++;
-                }
-            }
-            if (countVisited == node.childs.size() - 1) {
-                node.childs.clear();
-                node.setVisited(true);
-            }
-
-
-        }
-
-        return res;
-    }
-
-    public List<List<String>> getResult(String beginWord, String endWord, List<String> wordList) {
-        List<List<String>> res = new ArrayList<>();
-        boolean endFound=false;
-        boolean startFound=false;
-        for(int i=0; i<wordList.size(); i++){
-            if(beginWord.equals(wordList.get(i)))
-                startFound=true;
-            if(endWord.equals(wordList.get(i)))
-                endFound=true;
-
-            if(startFound && endFound && matched(beginWord, endWord)){
-                List<String> tmp= Arrays.asList(beginWord,endWord);
-                res.add(tmp);
-                return  res;
-            }
-
-        }
-        Node tree = buildCustomTree(wordList, beginWord, endWord);
-        if (tree == null) {
-            return res;
-        }
-        while (tree.childs.size() > 0) {
-            List<String> tmp = getBranch(tree, beginWord, endWord);
-
-
-
-            if (tmp != null && tmp.size() > 0) {
-                List<String> shorterList=new ArrayList<>();
-                if (!tmp.get(0).equals(beginWord)) {
-                    boolean correctSync = true;
-                    for (int i = 0; i < tmp.size() - 1; i++) {
-                        if (!matched(tmp.get(0), beginWord)
-                                || !matched(tmp.get(i), tmp.get(i + 1))
-                                || !matched(tmp.get(tmp.size()-1),endWord)) {
-                            correctSync = false;
-                            break;
-                        }
-                        shorterList.add(tmp.get(i));
-                        if(matched(tmp.get(i), endWord) && !tmp.get(i).equals(endWord)){
-                            tmp.clear();
-                            tmp.addAll(shorterList);
-                            break;
-                        }
-                    }
-                    if (correctSync) {
-                        tmp.add(0, beginWord);
-                    } else if (matched(tmp.get(tmp.size() - 1), beginWord)) {
-                        List<String> revertedTmp = new ArrayList<>();
-                        if(!tmp.get(tmp.size() - 1).equals(beginWord))
-                        revertedTmp.add(beginWord);
-                        for (int i = tmp.size() - 1; i >= 0; i--) {
-                            revertedTmp.add(tmp.get(i));
-                            if (matched(revertedTmp.get(revertedTmp.size() - 1), endWord)) {
-                                revertedTmp.add(endWord);
-                                break;
-                            }
-                        }
-                        tmp.clear();
-                        tmp.addAll(revertedTmp);
-                    }
-                }
-                if (matched(endWord, tmp.get(tmp.size() - 1))) {
-                    if (!tmp.get(tmp.size() - 1).equals(endWord))
-                        tmp.add(endWord);
-                } else
-                    tmp.clear();
-
-                if (tmp != null && tmp.size() > 0) {
-
-                    if(res.size()>0 && res.get(res.size()-1).size()>tmp.size()){
-                        res.remove(res.size()-1);
-                    }
-
-                    if(res.size()>0 && res.get(res.size()-1).size()==tmp.size())
-                        res.add(tmp);
-                    else
-                        res.add(tmp);
-                }
-            }
-
+    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+        List<List<String>> res = new ArrayList();
+        if (!wordList.contains(endWord)) { return res; } // better to clarify before writing this line.
+        HashSet<String> start = new HashSet();
+        HashSet<String> end = new HashSet();
+        HashSet<String> dict = new HashSet(); // one line to change
+        dict.addAll(wordList); // Changing the List<String> to Set<String> for faster search.
+        start.add(beginWord);
+        end.add(endWord);
+        HashMap<String, List<String>> hm = new HashMap();
+        List<String> onePath = new ArrayList();
+        onePath.add(beginWord);
+        if (findPath(start, end, dict, hm, false)) {
+            buildPath(beginWord, endWord, onePath, hm, res);
         }
         return res;
+    }
+
+    public boolean findPath(HashSet<String> start, HashSet<String> end, HashSet<String> dict, HashMap<String, List<String>> hm, boolean swap) {
+        if (start.size() > end.size()) {
+            return findPath(end, start, dict, hm, !swap);
+        }
+        boolean foundPath = false;
+        dict.removeAll(start);
+        dict.removeAll(end);
+        HashSet<String> next = new HashSet();
+        for (String cur : start) {
+            int n = cur.length();
+            for (int i = 0; i < n; i++) {
+                char[] arr = cur.toCharArray();
+                for (char c = 'a'; c <= 'z'; c++) {
+                    arr[i] = c;
+                    String temp = new String(arr);
+                    if (end.contains(temp) || dict.contains(temp)) {
+                        if (end.contains(temp)) {
+                            foundPath = true;
+                        } else {
+                            next.add(temp);
+                        }
+                        String key = !swap ? cur : temp;
+                        String value = !swap ? temp : cur;
+                        if (hm.containsKey(key)) {
+                            hm.get(key).add(value);
+                        } else {
+                            List<String> newList = new ArrayList();
+                            newList.add(value);
+                            hm.put(key, newList);
+                        }
+                    }
+                }
+            }
+        }
+        if (foundPath) { return true; }
+        if (next.isEmpty()) { return false; }
+        return findPath(next, end, dict, hm, swap);
+    }
+
+    public void buildPath(String begin, String end, List<String> onePath, HashMap<String, List<String>> hm, List<List<String>> res) {
+        if (begin.equals(end)) {
+            res.add(new ArrayList(onePath));
+            return;
+        }
+        if (hm.containsKey(begin)) {
+            for (String next : hm.get(begin)) {
+                onePath.add(next);
+                buildPath(next, end, onePath, hm, res);
+                onePath.remove(onePath.size() - 1);
+            }
+        }
     }
 }
