@@ -66,6 +66,39 @@ public class ClosestPalindromeTest {
 
 
     @Test
+    public  void Solution1TestCase8(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("101");
+        String exp="99";
+        Assert.assertEquals(exp,res);
+    }
+
+    @Test
+    public  void Solution1TestCase10(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("10001");
+        String exp="9999";
+        Assert.assertEquals(exp,res);
+    }
+
+    @Test
+    public  void Solution1TestCase9(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("99");
+        String exp="101";
+        Assert.assertEquals(exp,res);
+    }
+
+
+    @Test
+    public  void Solution1IsChotTestCase0(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("10");
+        String exp="9";
+        Assert.assertEquals(exp,res);
+    }
+
+    @Test
     public  void Solution1IsChotTestCase1(){
         ClosestPalindrome cp=new ClosestPalindrome();
         String res= cp.findClosestPalindrome("1552");
@@ -78,6 +111,54 @@ public class ClosestPalindromeTest {
         ClosestPalindrome cp=new ClosestPalindrome();
         String res= cp.findClosestPalindrome("1660");
         String exp="1661";
+        Assert.assertEquals(exp,res);
+    }
+
+    @Test
+    public  void Solution1IsChotTestCase3(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("88");
+        String exp="77";
+        Assert.assertEquals(exp,res);
+    }
+
+    @Test
+    public  void Solution1IsChotTestCase4(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("8778");
+        String exp="8668";
+        Assert.assertEquals(exp,res);
+    }
+
+    @Test
+    public  void Solution1IsChotTestCase5(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("1000");
+        String exp="999";
+        Assert.assertEquals(exp,res);
+    }
+
+    @Test
+    public  void Solution1IsChotTestCase6(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("1283");
+        String exp="1331";
+        Assert.assertEquals(exp,res);
+    }
+
+    @Test
+    public  void Solution1IsChotTestCase7(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("100000000");
+        String exp="99999999";
+        Assert.assertEquals(exp,res);
+    }
+
+    @Test
+    public  void Solution1IsChotTestCase8(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("999");
+        String exp="1001";
         Assert.assertEquals(exp,res);
     }
 
