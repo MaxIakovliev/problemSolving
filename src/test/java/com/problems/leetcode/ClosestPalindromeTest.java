@@ -55,4 +55,31 @@ public class ClosestPalindromeTest {
         String exp="818";
         Assert.assertEquals(exp,res);
     }
+
+    @Test
+    public  void Solution1TestCase7(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("36364");
+        String exp="36363";
+        Assert.assertEquals(exp,res);
+    }
+
+
+    @Test
+    public  void Solution1IsChotTestCase1(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("1552");
+        String exp="1551";
+        Assert.assertEquals(exp,res);
+    }
+
+    @Test
+    public  void Solution1IsChotTestCase2(){
+        ClosestPalindrome cp=new ClosestPalindrome();
+        String res= cp.findClosestPalindrome("1660");
+        String exp="1661";
+        Assert.assertEquals(exp,res);
+    }
+
+
 }
