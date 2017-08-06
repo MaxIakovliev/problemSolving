@@ -34,4 +34,15 @@ public class MaximumAverageSubarrayIITest {
         double res=ma.findMaxAverage(arr,6);
         Assert.assertEquals(exp,res,0.00001);
     }
+
+    @Test
+    public  void testCase4(){
+        MaximumAverageSubarrayII ma=new MaximumAverageSubarrayII();
+        int[] arr= {9,7,3,5,6,2,0,8,1,9};
+        double exp=5.33333;
+        double res=ma.findMaxAverage(arr,6);
+        Assert.assertEquals(exp,res,0.00001);
+    }
+
+    //
 }
