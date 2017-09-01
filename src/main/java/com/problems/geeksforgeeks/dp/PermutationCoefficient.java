@@ -22,9 +22,7 @@ public class PermutationCoefficient {
     }
 
     public static void main(String[] args) {
-
         System.out.println(new PermutationCoefficient().solution(10,2));
-
     }
 
 }
