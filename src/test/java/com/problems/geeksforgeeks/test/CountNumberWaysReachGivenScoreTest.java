@@ -4,8 +4,6 @@ import com.problems.geeksforgeeks.dp.CountNumberWaysReachGivenScore;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 /**
  * Created by Maks on 8/26/2017.
  */
@@ -42,7 +40,7 @@ public class CountNumberWaysReachGivenScoreTest {
     public void recursivePrintCountTestCase1(){
         CountNumberWaysReachGivenScore s=new CountNumberWaysReachGivenScore();
 
-        s.recursivePrint(6,0,new ArrayList<>(),6);
+       // s.recursivePrint(6,0,new ArrayList<>(),6);
         //Assert.assertEquals(1,res);
     }
 
