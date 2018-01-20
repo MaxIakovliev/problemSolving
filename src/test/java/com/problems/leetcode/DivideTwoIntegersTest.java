@@ -65,4 +65,27 @@ public class DivideTwoIntegersTest {
         DivideTwoIntegers dti=new DivideTwoIntegers();
         Assert.assertEquals(2147483647,dti.divide(-2147483648,-1));
     }
+
+    @Test
+    public void test7(){
+        DivideTwoIntegers dti=new DivideTwoIntegers();
+        Assert.assertEquals(-2147483648,dti.divide(-2147483648,1));
+    }
+
+    @Test
+    public void test8(){
+        DivideTwoIntegers dti=new DivideTwoIntegers();
+        Assert.assertEquals(-1073741824,dti.divide(-2147483648,2));
+    }
+    @Test
+    public void test9(){
+        DivideTwoIntegers dti=new DivideTwoIntegers();
+        Assert.assertEquals(536870911,dti.divide(2147483647,4));
+    }
+
+    @Test
+    public void test10(){
+        DivideTwoIntegers dti=new DivideTwoIntegers();
+        Assert.assertEquals(0,dti.divide(-1010369383,-2147483648));
+    }
 }
