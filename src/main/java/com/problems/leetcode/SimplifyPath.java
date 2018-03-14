@@ -34,6 +34,64 @@ public class SimplifyPath {
         }
         return  "/"+sb.toString();
     }
+
+    public String simplifyPath2(String path) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < path.length(); i++) {
+            if (path.charAt(i) == '/' && i + 3 < path.length()
+                    && path.charAt(i + 1) == '.' && path.charAt(i + 2) == '.' && path.charAt(i + 3) == '.') {
+                if (path.charAt(path.length() - 1) == '/')
+                    return path.substring(0, path.length() - 1);
+                return path;
+            } else if (path.charAt(i) == '/' && i + 1 < path.length() && path.charAt(i + 1) == '/') {
+                i++;
+                if (sb.length() > 0 && sb.charAt(sb.length() - 1) != '/')
+                    sb.append('/');
+            } else if (path.charAt(i) == '.' && i + 1 < path.length()
+                    && path.charAt(i + 1) == '/' && i > 0 && path.charAt(i - 1) == '/') {
+                i++;
+            } else if (path.charAt(i) == '/' && i + 2 < path.length()
+                    && path.charAt(i + 1) == '.' && path.charAt(i + 2) == '/') {
+                i++;
+            } else if (path.charAt(i) == '/' && i + 2 < path.length()
+                    && path.charAt(i + 1) == '.' && path.charAt(i + 2) == '.') {
+
+                if (i + 3 < path.length() && path.charAt(i + 3) != '/') {
+                    if (path.charAt(path.length() - 1) == '/')
+                        return path.substring(0, path.length() - 1);
+                    return path;
+                }
+
+                i += 2;
+                while (sb.length() > 1 && sb.charAt(sb.length() - 1) != '/') {
+                    sb.deleteCharAt(sb.length() - 1);
+                }
+                if (sb.length() > 1 && sb.charAt(sb.length() - 1) == '/') {
+                    sb.deleteCharAt(sb.length() - 1);
+                }
+                if (sb.length() == 0)
+                    sb.append("/");
+            } else {
+                if (sb.length() > 0 && sb.charAt(sb.length() - 1) == '/' && path.charAt(i) == '/') {
+                    continue;
+                }
+
+                sb.append(path.charAt(i));
+            }
+
+        }
+        if (sb.length() >= 2 && sb.charAt(sb.length() - 1) == '.' && sb.charAt(sb.length() - 2) == '/') {
+            if (sb.length() > 2 && sb.charAt(sb.length() - 1) == '.' && sb.charAt(sb.length() - 2) == '/') {
+                return sb.substring(0, sb.length() - 2).toString();
+
+            }
+            return sb.substring(0, sb.length() - 1).toString();
+        }
+
+        if (sb.length() > 1 && sb.charAt(sb.length() - 1) == '/')
+            return sb.substring(0, sb.length() - 1);
+        return sb.toString();
+    }
     private boolean wrongdot(String s){
         if (s.length()>=3 && s.charAt(0)=='.' && s.charAt(1)=='.' && s.charAt(2)=='.')
             return true;
