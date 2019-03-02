@@ -110,7 +110,7 @@ public class KnightsTour {
     }
 
     public static void main(String[] args) {
-        KnightsTour kt=new KnightsTour(8);
+        KnightsTour kt=new KnightsTour(6);
         //kt.solve(0,0,0);
         //kt.print();
         Integer[][] arr=kt.field;
